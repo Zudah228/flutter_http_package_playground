@@ -1,0 +1,32 @@
+name: flutter_http_package_playground
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: '>=3.3.2 <4.0.0'
+
+chopper_version: &chopper_version ^7.4.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  http: ^1.2.1
+  chopper: *chopper_version
+  dio: ^5.4.3+1
+  retrofit: ^4.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+  # Code Generator
+  build_runner: ^1.12.2
+  chopper_generator: *chopper_version
+  retrofit_generator: ^8.1.0
+
+
+flutter:
+  uses-material-design: true
