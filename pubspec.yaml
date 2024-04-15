@@ -23,7 +23,7 @@ dev_dependencies:
   flutter_lints: ^3.0.0
 
   # Code Generator
-  build_runner: ^1.12.2
+  build_runner: ^2.4.9
   chopper_generator: *chopper_version
   retrofit_generator: ^8.1.0
 
