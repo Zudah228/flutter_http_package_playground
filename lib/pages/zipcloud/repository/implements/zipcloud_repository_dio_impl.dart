@@ -6,7 +6,7 @@ import '../../../../utils/ex/dio_response_ex.dart';
 import '../../models/zipcloud_address_list.dart';
 import '../zipcloud_repository.dart';
 
-class ZipcloudRepositoryHttpImpl implements ZipcloudRepository {
+class ZipcloudRepositoryDioImpl implements ZipcloudRepository {
   final _dio = Dio(
     BaseOptions(
       validateStatus: (_) => true,
@@ -17,7 +17,7 @@ class ZipcloudRepositoryHttpImpl implements ZipcloudRepository {
   @override
   Future<ZipcloudAddressList> search({required String zipcode}) async {
     final response = await _dio.get(
-      'search/',
+      '/search',
       queryParameters: {
         'zipcode': zipcode,
       },

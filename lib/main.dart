@@ -14,6 +14,12 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(
+        colorSchemeSeed: Colors.amber,
+        inputDecorationTheme: const InputDecorationTheme(
+          filled: true,
+        ),
+      ),
       home: Builder(
         builder: (context) {
           return Scaffold(

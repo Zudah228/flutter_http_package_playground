@@ -16,5 +16,8 @@ class ZipcloudAddressList with _$ZipcloudAddressList {
     String? message,
   }) = _ZipcloudAddressList;
 
-  factory ZipcloudAddressList.fromJson(Map<String, dynamic> json) => _$ZipcloudAddressListFromJson(json);
+  factory ZipcloudAddressList.fromJson(Map<String, dynamic> json) =>
+      _$ZipcloudAddressListFromJson(json);
+
+  ZipcloudAddress? get firstOrNull => list.firstOrNull;
 }

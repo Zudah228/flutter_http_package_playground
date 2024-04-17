@@ -20,4 +20,6 @@ class ZipcloudAddress with _$ZipcloudAddress {
 
   factory ZipcloudAddress.fromJson(Map<String, dynamic> json) =>
       _$ZipcloudAddressFromJson(json);
+
+  String get fullAddress => '$address1$address2$address3';
 }
