@@ -1,0 +1,8 @@
+{
+  "Filename": {
+    "prefix": ["filename"],
+    "body": [
+      "${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}",
+    ]
+  }
+}
