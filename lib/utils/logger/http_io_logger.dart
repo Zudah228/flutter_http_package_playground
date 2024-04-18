@@ -81,18 +81,12 @@ class DioLogger extends HttpIOLogger<dio.RequestOptions, dio.Response> {
 
   @override
   void onRequest(dio.RequestOptions request) {
-    String message = 'リクエストの開始\n';
-
-    message += 'baseUrl: ${request.uri}\n';
-    message += 'method: ${request.method}\n';
-    message += 'headers: ${request.headers}\n';
-
-    if (request is http.Request) {
-      message += 'body: ${request.data}\n';
-    }
-
-    logger.debug(message);
-    logger.debug(message);
+    logRequest(
+      url: request.uri,
+      method: request.method,
+      headers: request.headers,
+      body: request.data,
+    );
   }
 
   @override
