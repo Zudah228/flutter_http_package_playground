@@ -18,3 +18,9 @@ abstract class ZipcloudRepository {
     required String zipcode,
   });
 }
+
+enum ZipcloudRepositoryImplements {
+  http,
+  dio,
+  ;
+}

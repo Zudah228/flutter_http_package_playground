@@ -16,12 +16,36 @@ abstract class HttpIOLogger<Req extends Object, Res extends Object> {
   void onResponse(Res request) {}
 
   @protected
-  String bodyToMessage(dynamic body) {
+  void logRequest({
+    required Object url,
+    required String method,
+    required Map<String, dynamic> headers,
+    Object? body,
+  }) {
+    String message = 'リクエストの開始\n';
+
+    message += 'url: $url\n';
+    message += 'method: $method\n';
+    message += 'headers: ${_mapLabel(headers)}\n';
+
+    message += 'body: ${_bodyToMessage(body)}\n';
+
+    logger.debug(message);
+  }
+
+  @protected
+  void logResponse() {}
+
+  String _bodyToMessage(dynamic body) {
     if (body is Map) {
-      return const JsonEncoder.withIndent('  ').convert(body);
+      return _mapLabel(body);
     }
 
     return body.toString();
+  }
+
+  String _mapLabel(Map data) {
+    return const JsonEncoder.withIndent('  ').convert(data);
   }
 }
 
@@ -32,17 +56,17 @@ class HttpLibLogger extends HttpIOLogger<http.BaseRequest, http.Response> {
 
   @override
   void onRequest(http.BaseRequest request) {
-    String message = 'リクエストの開始\n';
-
-    message += 'baseUrl: ${request.url}\n';
-    message += 'method: ${request.method}\n';
-    message += 'headers: ${request.headers}\n';
-
+    Object? body;
     if (request is http.Request) {
-      message += 'body: ${jsonDecode(request.body)}\n';
+      body = jsonDecode(request.body);
     }
 
-    logger.debug(message);
+    logRequest(
+      url: request.url,
+      method: request.method,
+      headers: request.headers,
+      body: body,
+    );
   }
 
   @override

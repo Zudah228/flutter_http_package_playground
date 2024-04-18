@@ -7,6 +7,8 @@ import '../../models/zipcloud_address_list.dart';
 import '../zipcloud_repository.dart';
 
 class ZipcloudRepositoryDioImpl implements ZipcloudRepository {
+  ZipcloudRepositoryDioImpl();
+
   final _dio = Dio(
     BaseOptions(
       validateStatus: (_) => true,

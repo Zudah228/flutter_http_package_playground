@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 import 'models/zipcloud_address_list.dart';
 import 'repository/implements/zipcloud_repository_dio_impl.dart';
+import 'repository/implements/zipcloud_repository_http_impl.dart';
+import 'repository/zipcloud_repository.dart';
 
 class ZipcloudPage extends StatefulWidget {
   const ZipcloudPage._();
@@ -27,14 +29,19 @@ class _ZipcloudPageState extends State<ZipcloudPage> {
   Completer<ZipcloudAddressList>? _completer;
   Future<ZipcloudAddressList?>? get _future => _completer?.future;
 
+  ZipcloudRepositoryImplements _repositoryImplement =
+      ZipcloudRepositoryImplements.http;
+  ZipcloudRepository get _repository => switch (_repositoryImplement) {
+        ZipcloudRepositoryImplements.http => ZipcloudRepositoryHttpImpl(),
+        ZipcloudRepositoryImplements.dio => ZipcloudRepositoryDioImpl(),
+      };
+
   Future<void> _search() async {
     await _completer?.future;
 
     setState(() {
       _completer = Completer()
-        // TODO(tsuda): bloc かなんかで DI
-        ..complete(ZipcloudRepositoryDioImpl()
-            .search(zipcode: _textEditingController.text));
+        ..complete(_repository.search(zipcode: _textEditingController.text));
     });
   }
 
@@ -48,6 +55,25 @@ class _ZipcloudPageState extends State<ZipcloudPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              SegmentedButton(
+                segments: const [
+                  ButtonSegment(
+                    value: ZipcloudRepositoryImplements.dio,
+                    label: Text('dio'),
+                  ),
+                  ButtonSegment(
+                    value: ZipcloudRepositoryImplements.http,
+                    label: Text('http'),
+                  ),
+                ],
+                selected: {_repositoryImplement},
+                onSelectionChanged: (p0) {
+                  _repositoryImplement =
+                      p0.firstOrNull ?? ZipcloudRepositoryImplements.http;
+                  setState(() {});
+                },
+              ),
+              const SizedBox(height: 32),
               TextField(
                 controller: _textEditingController,
               ),
