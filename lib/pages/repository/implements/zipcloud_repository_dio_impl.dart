@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 
-import '../../../../utils/ex/dio_response_ex.dart';
-import '../../models/zipcloud_address_list.dart';
-import '../zipcloud_repository.dart';
+import '../../../utils/ex/dio_response_ex.dart';
+import '../../../repository/models/zipcloud_address_list.dart';
+import '../../../repository/zipcloud_repository.dart';
 
 class ZipcloudRepositoryDioImpl implements ZipcloudRepository {
   ZipcloudRepositoryDioImpl();

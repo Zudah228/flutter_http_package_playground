@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'pages/zipcloud/zipcloud_page.dart';
+import 'pages/zipcloud_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

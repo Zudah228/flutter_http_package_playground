@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'models/zipcloud_address_list.dart';
+import '../repository/models/zipcloud_address_list.dart';
 import 'repository/implements/zipcloud_repository_dio_impl.dart';
 import 'repository/implements/zipcloud_repository_http_impl.dart';
-import 'repository/zipcloud_repository.dart';
+import '../repository/zipcloud_repository.dart';
 
 class ZipcloudPage extends StatefulWidget {
   const ZipcloudPage._();

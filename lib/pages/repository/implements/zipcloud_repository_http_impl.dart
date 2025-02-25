@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import '../../../../utils/ex/http_response_ex.dart';
-import '../../models/zipcloud_address_list.dart';
-import '../zipcloud_repository.dart';
+import '../../../utils/ex/http_response_ex.dart';
+import '../../../repository/models/zipcloud_address_list.dart';
+import '../../../repository/zipcloud_repository.dart';
 
 class ZipcloudRepositoryHttpImpl implements ZipcloudRepository {
   http.Client _client() => http.Client();

@@ -1,6 +1,6 @@
 import 'package:path/path.dart' as p;
 
-import '../models/zipcloud_address_list.dart';
+import 'models/zipcloud_address_list.dart';
 
 abstract class ZipcloudRepository {
   static const _authority = 'zipcloud.ibsnet.co.jp';
